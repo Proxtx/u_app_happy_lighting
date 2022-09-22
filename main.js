@@ -8,7 +8,9 @@ export class App {
     this.findClient();
   }
 
-  async changeColor(r, g, b) {
+  async changeColor(color) {
+    if (color[0] == "#") color = color.substring(1);
+    if (color.length != 6) return;
     if (!this.client) await this.findClient();
     await this.client.request("ble", "connect", [this.config.address]);
     await this.client.request("ble", "discover_services", []);
@@ -16,9 +18,9 @@ export class App {
       0xffd9,
       [
         0x56,
-        Number("0x" + r),
-        Number("0x" + g),
-        Number("0x" + b),
+        Number("0x" + color.substring(0, 2)),
+        Number("0x" + color.substring(2, 4)),
+        Number("0x" + color.substring(4, 6)),
         0x00,
         0xf0,
         0xaa,

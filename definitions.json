@@ -1,0 +1,8 @@
+{
+  "methods": {
+    "changeColor": {
+      "arguments": ["color"],
+      "visible": true
+    }
+  }
+}
