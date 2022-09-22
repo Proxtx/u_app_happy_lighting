@@ -1,0 +1,20 @@
+{
+  "name": "u_app_happy_lighting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proxtx/u_app_happy_lighting.git"
+  },
+  "author": "Proxtx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Proxtx/u_app_happy_lighting/issues"
+  },
+  "homepage": "https://github.com/Proxtx/u_app_happy_lighting#readme"
+}
