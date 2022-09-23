@@ -3,6 +3,7 @@
     "changeColor": {
       "arguments": [
         {
+          "name": "Color",
           "type": "color",
           "format": "hex"
         }
