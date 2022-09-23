@@ -1,7 +1,12 @@
 {
   "methods": {
     "changeColor": {
-      "arguments": ["color"],
+      "arguments": [
+        {
+          "type": "color",
+          "format": "hex"
+        }
+      ],
       "visible": true
     }
   }
