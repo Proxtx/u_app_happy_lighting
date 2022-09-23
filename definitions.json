@@ -10,6 +10,16 @@
       ],
       "visible": true,
       "name": "Change Color"
+    },
+    "turnOn": {
+      "arguments": [],
+      "visible": true,
+      "name": "Turn On"
+    },
+    "turnOff": {
+      "arguments": [],
+      "visible": true,
+      "name": "Turn Off"
     }
   }
 }
