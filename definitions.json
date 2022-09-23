@@ -8,18 +8,26 @@
           "format": "hex"
         }
       ],
-      "visible": true,
       "name": "Change Color"
     },
     "turnOn": {
       "arguments": [],
-      "visible": true,
       "name": "Turn On"
     },
     "turnOff": {
       "arguments": [],
-      "visible": true,
       "name": "Turn Off"
+    },
+    "party": {
+      "name": "Party",
+      "arguments": [
+        {
+          "name": "Color Switches",
+          "type": "number",
+          "placeholder": "Number",
+          "value": 50
+        }
+      ]
     }
   }
 }

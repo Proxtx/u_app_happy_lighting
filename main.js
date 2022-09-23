@@ -8,6 +8,13 @@ export class App {
     this.findClient();
   }
 
+  async party(count) {
+    for (let c = 0; c < count; c++) {
+      await this.changeColor(getRandomColor());
+      await new Promise((r) => setTimeout(r, 100));
+    }
+  }
+
   async changeColor(color) {
     if (color[0] == "#") color = color.substring(1);
     if (color.length != 6) return;
@@ -67,3 +74,9 @@ export class App {
     }
   }
 }
+
+const getRandomColor = () => {
+  return "#000000".replace(/0/g, function () {
+    return (~~(Math.random() * 16)).toString(16);
+  });
+};
