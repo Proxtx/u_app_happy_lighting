@@ -2,6 +2,7 @@ import { clients, refreshClients } from "../../private/clients.js";
 
 export class App {
   client;
+  on = false;
 
   constructor(config) {
     this.config = config;
@@ -45,6 +46,8 @@ export class App {
       0xffd9,
       [0xcc, 0x23, 0x33],
     ]);
+
+    on = true;
   }
 
   async turnOff() {
@@ -56,6 +59,8 @@ export class App {
       0xffd9,
       [0xcc, 0x24, 0x33],
     ]);
+
+    on = false;
   }
 
   async findClient() {
@@ -72,6 +77,10 @@ export class App {
         }
       }
     }
+  }
+
+  isOn() {
+    return this.on();
   }
 }
 

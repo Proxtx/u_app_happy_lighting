@@ -28,6 +28,11 @@
           "value": 50
         }
       ]
+    },
+    "isOn": {
+      "name": "Lamp status",
+      "arguments": [],
+      "autoRun": true
     }
   }
 }
