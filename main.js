@@ -17,7 +17,7 @@ export class App {
 
   async changeColor(color) {
     if (color[0] == "#") color = color.substring(1);
-    if (color.length != 6) return;
+    if (color.length != 6) return false;
     if (!this.client) await this.findClient();
     if (!this.client) return;
     await this.client.request("ble", "connect", [this.config.address]);
@@ -34,28 +34,34 @@ export class App {
         0xaa,
       ],
     ]);
+
+    return true;
   }
 
   async turnOn() {
     if (!this.client) await this.findClient();
-    if (!this.client) return;
+    if (!this.client) return false;
     await this.client.request("ble", "connect", [this.config.address]);
     await this.client.request("ble", "discover_services", []);
     await this.client.request("ble", "write_to_uuid", [
       0xffd9,
       [0xcc, 0x23, 0x33],
     ]);
+
+    return true;
   }
 
   async turnOff() {
     if (!this.client) await this.findClient();
-    if (!this.client) return;
+    if (!this.client) return false;
     await this.client.request("ble", "connect", [this.config.address]);
     await this.client.request("ble", "discover_services", []);
     await this.client.request("ble", "write_to_uuid", [
       0xffd9,
       [0xcc, 0x24, 0x33],
     ]);
+
+    return true;
   }
 
   async findClient() {
