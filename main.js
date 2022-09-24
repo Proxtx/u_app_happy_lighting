@@ -19,7 +19,7 @@ export class App {
     if (color[0] == "#") color = color.substring(1);
     if (color.length != 6) return false;
     if (!this.client) await this.findClient();
-    if (!this.client) return;
+    if (!this.client) return "Can't find client in reach of device.";
     await this.client.request("ble", "connect", [this.config.address]);
     await this.client.request("ble", "discover_services", []);
     await this.client.request("ble", "write_to_uuid", [
@@ -34,26 +34,22 @@ export class App {
         0xaa,
       ],
     ]);
-
-    return true;
   }
 
   async turnOn() {
     if (!this.client) await this.findClient();
-    if (!this.client) return false;
+    if (!this.client) return "Can't find client in reach of device.";
     await this.client.request("ble", "connect", [this.config.address]);
     await this.client.request("ble", "discover_services", []);
     await this.client.request("ble", "write_to_uuid", [
       0xffd9,
       [0xcc, 0x23, 0x33],
     ]);
-
-    return true;
   }
 
   async turnOff() {
     if (!this.client) await this.findClient();
-    if (!this.client) return false;
+    if (!this.client) return "Can't find client in reach of device.";
     await this.client.request("ble", "connect", [this.config.address]);
     await this.client.request("ble", "discover_services", []);
     await this.client.request("ble", "write_to_uuid", [
