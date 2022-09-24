@@ -47,7 +47,7 @@ export class App {
       [0xcc, 0x23, 0x33],
     ]);
 
-    on = true;
+    this.on = true;
   }
 
   async turnOff() {
@@ -60,7 +60,7 @@ export class App {
       [0xcc, 0x24, 0x33],
     ]);
 
-    on = false;
+    this.on = false;
   }
 
   async findClient() {
