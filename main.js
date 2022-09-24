@@ -80,7 +80,7 @@ export class App {
   }
 
   isOn() {
-    return this.on();
+    return this.on;
   }
 }
 
