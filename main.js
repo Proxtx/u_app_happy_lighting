@@ -56,8 +56,6 @@ export class App {
       0xffd9,
       [0xcc, 0x24, 0x33],
     ]);
-
-    return true;
   }
 
   async findClient() {
