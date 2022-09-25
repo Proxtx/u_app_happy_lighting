@@ -51,16 +51,21 @@ export class App {
 
   async findClient() {
     await refreshClients();
-    clientLoop: for (let clientName in clients) {
+    for (let clientName in clients) {
       let client = clients[clientName];
       await client.request("ble", "start_scan", []);
+      if (await this.confirmClient(client)) break;
       await new Promise((r) => setTimeout(r, 20000));
-      let peripherals = (await client.request("ble", "peripherals", [])).result;
-      for (let peripheral of peripherals) {
-        if (peripheral.address == this.config.address) {
-          this.client = client;
-          break clientLoop;
-        }
+      if (await this.confirmClient(client)) break;
+    }
+  }
+
+  async confirmClient(client) {
+    let peripherals = (await client.request("ble", "peripherals", [])).result;
+    for (let peripheral of peripherals) {
+      if (peripheral.address == this.config.address) {
+        this.client = client;
+        return true;
       }
     }
   }
@@ -72,6 +77,7 @@ export class App {
     await this.client.request("ble", "discover_services", []);
     let writeResult = await this.client.request("ble", "write_to_uuid", write);
     if (!writeResult || !writeResult.result) {
+      await this.client.request("ble", "disconnect", []);
       this.client = undefined;
       return await this.writeToClient(write);
     }
